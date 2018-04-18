@@ -1,0 +1,433 @@
+
+1.  set(string) => distinct dict of chars
+    for eg =  set("abcda")
+             Out[237]: {'a', 'b', 'c', 'd'}
+2. to clear python buffer=> C-x h to select & C-w to kill
+3. to raise error from code use => raise ValueError('error message')
+4. you can write condition something like =>
+    value after true if True else value after false
+    for eg = 1024 if True else 1000
+               => 1024
+5. You can pass default value to variable and make it optional
+    for eg. def sample(a, b=True):
+    then you can call this function like
+     1. sample(a,False)
+     2. sample(a)
+
+6. passing values in parameters
+     for eg= def example2(a, b)
+     i. example(2, 3) = right
+     ii. example(a=2, b=3) = right
+     iii. example(b=2, a=3) = right
+     iv. example(3,b=4) = right
+     v. example(a=3, 4) = wrong
+
+7. Data-types in python
+    1. List (mutable)
+       eg. a = ['a', 'b', 'z', 'c']
+             a[-1] = 'c'
+             a[0] = 'a'
+
+   * Slicing a list:
+           a[1:3] = ['b' , 'z']
+           a[:3] = ['a' , 'b' , 'z']
+           a[2:] = ['z' , 'c']
+           a[:] = ['a', 'b', 'z', 'c']
+
+  * count method for list: to count occurences of object in list
+        eg. aList = [123, 'xyz', 'zara', 'abc', 123];
+              aList.count(123) = 2
+              aList.count(1234) = 0
+
+  * index method takes value as param and returns index, also returns ValueError if
+  value is not present in list
+      eg. aList.index('xyz') = 1
+
+* difference between append and extend(takes only list as paramter)
+append is used to add only 1 object but in extend you can add list
+eg . b = [1, 2, 3, 4]
+b.extend([5, 6]) = [1,2,3,4,5,6]
+
+* Methods to remove item from list are = del , remove & pop
+* empty lists are false ; all other are true.
+
+2. Tuples (immutable; once created , can't be changed)
+    for eg.    a_tuple = ("a", "b", "mpilgrim", "z", "example")
+
+ * trick to assign values of tuples to other vars =
+   eg . v = (1, 2, 3)
+         (a, b, c) = v    then a = 1, b = 2, ...
+
+3. Sets (immutable)
+ * can perform union, intersection & differencce
+ * can create set from list eg  . a_set = set(a_list)
+ * methods to modify set are = add(single argument), update(any no of args)
+ * to remove methods = discard and remove takes single argument &  diff is discard returns no output if element is not present, remove throws error , clear()
+
+4. dict (immutable)
+* for eg. a_dict = {'a': 'b' , 'c' : 'd'}
+               a_dict['a'] = 'b'
+* for eg .   a= {1000: ['KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
+                         1024: ['KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB']}
+
+                a[1000][2] = 'GB'
+
+5. Numbers
+    11 / 2 = 5.5
+    11 // 2 = 5
+    -11 // 2 = -6
+     11.0 // 2 = 5.0
+
+
+* for i in reversed(range(1, 10, 2)) => will return 9 7 5 3 1
+* for i in sorted(set(a_list) = will return elements in sorted order
+
+
+
+6. Strings
+    converting string to dict
+    a = "abcd"
+    {a[i]:a[i+1] for i in range(0,len(a),2)}
+    =>  {'a': 'b', 'c': 'd'}
+
+7. bytes object doesn't support item assignment
+
+8. regular expression =>
+     *  re.search('[^de]g$' , input) => it means return true if character before g is not d or e.  ^ indicates negation here.
+     *  re.search([dg]$ , input) => means ends with d or g
+
+9.  with open('output.txt', 'w') as f:
+              f.write('Hi there!')
+     with statement will automatically close file after nested block of code.
+
+
+
+
+
+
+10 . Classes =>
+
+       * In Python, simply call a class as if it were a function to create a new instance
+          of the class. There is no explicit new operator like there is in c++ or Java.
+          import fibo2
+          fib = fibo2.Fib(100)
+
+
+       * To use classes or methods from one module to another module =>
+          from module_name import * => will import all classes. To import specific class
+          replace * with className
+
+       * __next__() method is use on list_iterator object (list return from iter() method)
+          iterates one-by-one and when no item left throws StopIteration error
+
+
+* raw_input() method used to read entire line
+
+
+
+11. string interesting methods:
+
+* str.join(seq) = takes sequence as parameter
+  for eg  a = "a hello my world"
+                       then a.split(" ") => ['a', 'hello', 'my', 'world']
+                       and "-".join(a) => 'a-hello-my-world'
+
+* islower() and isupper() are methods to check case and upper() & lower() are methods to convert case
+
+* all function in python is similar to every? function is clojure
+  and any? similar to some
+  eg
+
+* print("H"*2) => HH    :-)
+* rjust(), center(), ljust()=>functions to leave space from right or left. paramter is width and can be character '-'
+
+• to reverse string => "abavv"[::-1] =>  'vvaba'
+
+
+               **** Regular Expression *****
+
+
+12. to check a string is substring of other string
+      for eg => s = "my name is Rupesh"
+                            "na" in s => True
+                             "k" in s => False
+13. To search for word begins with pattern/expr is = > r'^c'  (where c is string)
+      r'^c' = check for begins with
+      r'c$' = check for ends with
+
+14. Method to search for pattern =>
+            re.search(expr, s) = > returns object (can be used as truthy value) if match found else None
+        for eg => re.search(r'^cat' , "cat is my favourite pet")
+        Out[67]: <_sre.SRE_Match object; span=(0, 3), match='cat'>
+
+15. Character classes => "[" and "]"
+     for eg = > a = re.search(r'M[an][is]h','Maih is')
+                       [an] means eithr 'a' or 'n'
+                      =>  Out[113]: <_sre.SRE_Match object; span=(0, 4), match='Maih'>
+
+16. Interesting=>
+      To negate choices between [ and ] =>
+      for eg => 1. a = re.search(r'[^abc]','Maih is')   this will return nothing because meaning is anything other than a,b or c
+                        2. a = re.search(r'^[abc]','aaih is') =>
+        string starting from a or b or c
+
+17. Predefined Character classes=>
+              • \d = any decimal digit; equivalent to the set [0-9]
+              • \D = any non-digit character , similar to [^0-9]
+              • \s = matches whitespace character, equivalent to [ \t\n\r\f\v]
+              • \S = any non-whitespace character , equivalent to [ ^\t\n\r\f\v]
+              • \w = matches any alphanumeric character; equivalent to [a-zA-Z-0-9_]
+              • \W = complement of \w
+              • \b = when you want to search for a character/word which has empty space
+                         before that word in original string
+                         for eg =>
+                           a = 'My name is rupesh sa'
+                           b = re.search(r"\Bru",a)
+             \B = if no space before word use this
+
+
+18. to form groups using re = >
+    for eg = >  a = re.search(r'([0-9]+).*: (.*)' , "Customer number: 232454, Date: February
+                              12, 2011")
+
+                 a.group() => Out[161]: '232454, Date: February 12, 2011'
+                 a.group(1)=> 232454
+                 a.group(2)=> February 12, 2011
+
+   for eg = to convert '<composer>Wolfgang Amadeus Mozart</composer>'
+                  to 'composer: Wolfgang Amadeus Mozart'
+
+  regular expr will be
+    b = re.search(r'<([a-z]+)>(.*)</\1>',a)
+    b.group() => '<composer>Wolfgang Amadeus Mozart</composer>'
+    b.group(1) => 'composer'
+    b.group(2) => 'Wolfgang Amadeus Mozart'
+
+
+eg 3 =
+     to get hours , mins & secs from date
+    s = "Sun Oct 14 13:47:03 CEST 2012"
+    a = re.search(r'\b(?P<hours>\d\d)\b' , s)
+     = > a.group() => '14'
+     => a.group('hours') => '14'
+    a = re.search(r'\b(?P<hours>\d\d):(?P<mins>\d\d):(?P<sec>\d\d)\b' , s)
+    =>  a.group('mins') => 47
+
+
+
+
+• iteratools.permutations ("str"  ,count) => return all permutations in list
+• split(pattern , maxsplit) =>
+   for eg
+         In [518]: a.split(" ",3)
+         Out[520]: ['My', 'name', 'is', 'rupesh sa']
+
+         In [521]: a.split(" ",2)
+         Out[521]: ['My', 'name', 'is rupesh sa']
+
+• re.sub(pattern , replacement_str, original_str)
+     used to search for char and replace it
+
+
+
+***** Advanced RE *******
+
+1. findall(pattern, strings[, flags])
+
+
+
+
+
+
+******* map,filter,reduce***********
+1. map returns list =>
+    map(func,coll)
+2. lamda is similar to fn in clojure
+   for eg
+   ans = list(map(lambda y: f2(y) , c))
+
+   ii. ans = list(map(lambda x,y:f2(x+y),[1,3,6],[1,2,3]))
+  =>  [2, 5, 9]
+
+*******     Exception handling ******
+
+def exception_eg():
+    while True:
+        try:
+            n = input("Enter a number")
+            n = int(n)
+            break
+        except ValueError:
+            print("wrong number")
+    print("success!")
+
+=>>
+ In [126]: exception_eg()
+Enter a number23.1
+wrong number
+Enter a number 6
+success
+
+
+
+• use of 'raise' =>
+   def exception_eg():
+    while True:
+        try:
+            n = input("Enter a number")
+            n = int(n)
+            break
+        except ValueError as e:
+            print("wrong number " , e)
+            raise
+
+def eg2():
+    try:
+        exception_eg()
+    except ValueError:
+        print("am here")
+    print("Lets go on")
+
+
+=>
+In [156]: eg2()
+Enter a number6.7
+wrong number  invalid literal for int() with base 10: '6.7'
+am here
+Lets go on
+
+
+used for multiple exceptions
+
+
+
+********* Interesting example of default params ******
+def f3(a,res=[]):
+    if a<10:
+        res.append(a)
+        return res
+
+
+
+=>
+In [181]: f3(4)
+Out[184]: [4]
+
+In [185]: f3(5)
+Out[185]: [4, 5]
+
+
+
+
+
+********* Classes ********
+1. __str__(self) => prints when called using print(obj)
+
+class eg:
+    def __init__(self, name=""):
+        self.name = name
+
+    def hello(self):
+        return "hello" + self.name
+
+
+= >  x = eg()
+        print(x) =>  hello
+
+
+2 . repr(list) = > to convert coll to string representation
+3. eval(string) = >  to convert string represented list to normal list
+4. To declare public, private & protected variables
+class A():
+
+    def __init__(self):
+        self.__priv = "I am private"
+        self._prot = "I am protected"
+        self.pub = "I am public"
+
+
+
+
+*********** package ***********
+1. if you want to use class from other file but in same folder
+
+use from python_course import sample1
+sample1 is class name written in python_course.py file
+_ is necessary
+
+
+
+
+
+
+
+
+
+*********** Decorators ************
+
+1. takes func as parameter
+2. returns func
+
+
+
+def decorator_func(original_func):
+    def inner_func():
+        print("Am here")
+        return original_func()
+    return inner_func
+
+@decorator_func
+def display():
+    print("am in display func")
+
+
+
+
+=>  display()
+Am here
+am in display func
+
+
+
+display() is equal to 'display = decorator_func(display)'
+
+
+• If you wanted to give decorator to different function with different parameters
+use *args, **kwargs
+
+def decorator_func(original_func):
+    def inner_func(*args, **kwargs):
+        print("Am here")
+        return original_func(*args, **kwargs)
+    return inner_func
+
+@decorator_func
+def display():
+    print("am in display func")
+
+@decorator_func
+def display2(name,age):
+    print("name=" + name + "age=" + str(age))
+
+In [146]: display2("rupesh", 22)
+Am here
+name=rupeshage=22
+
+
+  ***** to use decorator class **** example
+class decorator_class():
+    def __init__(self, original_func):
+        self.original_func = original_func
+
+    def __call__(self, *args, **kwargs):
+        print("Am Here in decorator class")
+        return self.original_func(*args, **kwargs)
+
+@decorator_class
+def display2(name,age):
+    print("name=" + name + "age=" + str(age))
+
+=>
+In [149]: display2("rupesh", 22)
+Am Here in decorator class
+name=rupeshage=22
