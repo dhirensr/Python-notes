@@ -1,0 +1,122 @@
+** PYthon
+*** This call fails, because you have a named argument followed by an unnamed (positional) argument, and that never works. Reading the argument list from left to right, once you have a single named argument, the rest of the arguments must also be named.
+
+
+*** This calls the approximate_size() function with False for the argument named a_kilobyte_is_1024_bytes and 4000 for the argument named size. (See? I told you the order didn’t matter.) Basically it says order of passing the args doesn't matter.
+*** Triple quotes are also an easy way to define a string with both single and double quotes, like qq/.../ in Perl 5.
+*** You may have heard the term “first-class object” in other programming contexts. In Python, functions are first-class objects. You can pass a function as an argument to another function. Modules are first-class objects. You can pass an entire module as an argument to a function. Classes are first-class objects, and individual instances of a class are also first-class objects.
+*** Python uses try...except blocks to handle exceptions, and the raise statement to generate them. Java and C++ use try...catch blocks to handle exceptions, and the throw statement to generate them.
+*** If both slice indices are left out, all items of the list are included. But this is not the same as the original a_list variable. It is a new list that happens to have all the same items. a_list[:] is shorthand for making a complete copy of a list.
+*** The + operator concatenates lists to create a new list. A list can contain any number of items; there is no size limit (other than available memory). However, if memory is a concern, you should be aware that list concatenation creates a second list in memory. In this case, that new list is immediately assigned to the existing variable a_list. So this line of code is really a two-step process — concatenation then assignment — which can (temporarily) consume a lot of memory when you’re dealing with large lists.
+*** If you start with a list of six items and append a list onto it, you end up with... a list of seven items. Why seven? Because the last item (which you just appended) is itself a list. Lists can contain any type of data, including other lists. That may be what you want, or it may not. But it’s what you asked for, and it’s what you got.
+*** If all you want to know is whether a value is in the list or not, the in operator is slightly faster than using the count() method. The in operator always returns True or False; it will not tell you how many times the value appears in the list.
+*** In a boolean context, an empty list is false.
+*** A tuple is defined in the same way as a list, except that the whole set of elements is enclosed in parentheses instead of square brackets. A tuple is an immutable list. A tuple can not be changed in any way once it is created.
+*** The major difference between tuples and lists is that tuples can not be changed. In technical terms, tuples are immutable. In practical terms, they have no methods that would allow you to change them. Lists have methods like append(), extend(), insert(), remove(), and pop(). Tuples have none of these methods. You can slice a tuple (because that creates a new tuple), and you can check whether a tuple contains a particular value (because that doesn’t change the tuple), and… that’s about it.
+*** To create a tuple of one item, you need a comma after the value. Without the comma, Python just assumes you have an extra pair of parentheses, which is harmless, but it doesn’t create a tuple.
+***  v = ('a', 2, True)  >>> (x, y, z) = v
+*** The symmetric_difference() method returns a new set containing all the elements that are in exactly one of the sets.
+*** Since SUFFIXES[1000] is a list, you can address individual items in the list by their 0-based index.
+***  glob.glob('*test*.py') -> like using grep in py files of directory , with pattern 'test'
+*** time and humansize are libraries which are helpful for getting time and filesize in a convenient manner for the output of os.stat(filename).
+*** split will give (filename ,directory) and splittext will give us (filename,extension)
+*** for filter an output we can use list comprehension something like [f for f in glob.glob('*.py') if os.stat(f).st_size > 6000]
+*** list(metadata_dict.keys()) will act for removing keys for in a dictionary.
+***  First, that’s a method call on a string literal. Strings are objects, and objects have methods. Second, the whole expression evaluates to a string. Third, {0} and {1} are replacement fields, which are replaced by the arguments passed to the format() method. For eg : "{0}'s password is {1}".format(username, password)
+***  si_suffixes = ['KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'] >>>> '1000{0[0]} = 1{0[1]}'.format(si_suffixes)
+*** for i in mylist[1::2]: print i in this case [::2] after the second dot the number acts as step size
+*** Functions can return more than one value. Typically functions in other programming languages can return only one value but in python we can return more than one value!! as is seen in the following code snippet.EG :  return k1,k2
+*** inally, Python can turn that list-of-lists into a dictionary simply by passing it to the dict() function. for eg : a_list_of_lists = [['user', 'pilgrim'], ['database', 'master'], ['password', 'PapayaWhip']] then dict(a_list_of_lists) will make a dictionary of it.
+*** [3:4] will include 3 and will not include 4
+*** An immutable sequence of Unicode characters is called a string.
+*** In Python, all functionality related to regular expressions is contained in the re module.
+*** In Roman numerals, there are seven characters that are repeated and combined in various ways to represent numbers.
+
+    I = 1
+    V = 5
+    X = 10
+    L = 50
+    C = 100
+    D = 500
+    M = 1000
+*** IC is not even a valid Roman numeral (because you can't subtract 1 directly from 100; you would need to write it as XCIX, “10 less than 100, then 1 less than 10”).
+*** Tens	90	XC Ones	9	IX
+*** re.search is used with regular expression for finding a regex in a string and optionally it can take 3 params also and the 3rd param decides that the regex is a verbose string or not
+*** If verbose string then pass re.VERBOSE as 3rd args which is a constant to indicate that pattern is verbose.
+*** re.compile to give the regex and search will only take string to match regex with , on that output if group () is applied then it return a tuple according to regex.
+*** for eg :  re.compile(r'^(\d{3})-(\d{3})-(\d{4})-(\d+)$')
+*** Regex patterns :
+    ^ matches the beginning of a string.
+    $ matches the end of a string.
+    \b matches a word boundary.
+    \d matches any numeric digit.
+    \D matches any non-numeric character.
+    x? matches an optional x character (in other words, it matches an x zero or one times).
+    x* matches x zero or more times.
+    x+ matches x one or more times.
+    x{n,m} matches an x character at least n times, but not more than m times.
+    (a|b|c) matches exactly one of a, b or c.
+    (x) in general is a remembered group. You can get the value of what matched by using the groups() method of the object returned by re.search.
+*** The ^ as the first character inside the square brackets means something special: negation. [^abc] means “any single character except a, b, or c”.
+***  ''.join(a_list) concatenates all the strings together into one.
+*** re.findall(' s.*? s', "The sixth sick sheikh's sixth sheep's sick.") => [' sixth s', " sheikh's s", " sheep's s"]
+But the re.findall() function only returned three matches. Specifically, it returned the first, the third, and the fifth. Why is that? Because it doesn’t return overlapping matches. The first match overlaps with the second, so the first is returned and the second is skipped. Then the third overlaps with the fourth, so the third is returned and the fourth is skipped. Finally, the fifth is returned. Three matches, not five.
+*** names = sorted(names, key=len)  ,this is acting as sort-by in clojure. (names here is a list)
+*** The itertools.groupby() function takes a sequence and a key function, and returns an iterator that generates pairs. Each pair contains the result of key_function(each item) and another iterator containing all the items that shared that key result.
+*** The itertools.groupby() function only works if the input sequence is already sorted by the grouping function. In the example above, you grouped a list of names by the len() function. That only worked because the input list was already sorted by length.
+*** zip(range(0, 3), range(10, 13)) here acts as zipmap of clojure.
+*** itertools.zip_longest(range(0, 3), range(10, 14)) -- On the other hand, the itertools.zip_longest() function stops at the end of the longest sequence, inserting None values for items past the end of the shorter sequences.
+*** dict(zip(characters, guess)) it can also be made in dictionary
+*** ord() function in Python can be used to convert string to num so if we pass a it returns 97 but if we pass 0-9 then it returns 48 onwards ASCII int.
+*** http://www.diveintopython3.net/advanced-iterators.html - good read on eval and its pros and cons
+***  sys.argv  ->  The arguments are separated by spaces. Inside of the script these arguments are accessible through the list variable sys.argv. The name of the script is included in this list sys.argv[0]. sys.argv[1] contains the first parameter, sys.argv[2] the second and so on.
+***  The asterisk "*" is used in Python to define a variable number of arguments. The asterisk character has to precede a variable identifier in the parameter list.
+*** we can access the global variables by using global keyword. like global a would give the value of a global variable and not local variable in  a function.
+*** https://stackoverflow.com/questions/36901/what-does-double-star-asterisk-and-star-asterisk-do-for-parameters
+*** Each module can only be imported once per interpreter session or in a program or script. If you change a module and if you want to reload it, you must restart the interpreter again.
+***
+*** span gives the string index end and start position matched with regexp with function re.search.
+***  t="A fat cat doesn't eat oat but a rat eats bats.  mo = re.findall("[force]at", t) -> to find all substrings of a string in python
+*** We can prevent the separation of empty strings by using None as the first argument. Now split will use the default behaviour, i.e. every substring consisting of connected whitespace characters will be taken as one separator: >>> mammon.split(None,5) here split will split first 5 times and then 6 arg will be the rest sentence.
+*** With Python 3, map() returns an iterator. lambda takes n number of args then a colon(:) followed by function definition. Lambda in python is used to make anonymous functions.
+*** map() can be applied to more than one list. The lists have to have the same length. map() will apply its lambda function to the elements of the argument lists, i.e. it first applies to the elements with the 0th index, then to the elements with the 1st index until the n-th index is reached
+*** a = [1,2,3,4]  b = [17,12,11,10] list(map(lambda x,y:x+y, a,b)) => [18, 14, 14, 14]
+*** [(x,y,z) for x in range(1,30) for y in range(x,30) for z in range(y,30) if x**2 + y**2 == z**2] -> list comprehension can also be used as this for removing pythagorean triplets
+*** x = (x **2 for x in range(20)) - will return a generator.
+*** we can pass step index to range also as a third parameter
+*** Main difference between a function and a generator is that functions have return statements and generator has yield statement.
+*** instead of try-catch block in python there is try-exception block in which we can raise various types of inbuilt exceptions
+***  "finally" clause is always executed regardless if an exception occurred in a try block or not.
+*** So what's magic about the __init__ method? The answer is, you don't have to invoke it directly. The invocation is realized behind the scenes. When you create an instance x of a class A with the statement "x = A()", Python will do the necessary calls to __new__ and __init__.
+*** In python the default operator functions can also be overriden like +,- etc in a class.
+*** Slots are just preventing the addition of dynamic keys in dict ,so in __slot__ method of class we can mention the attributes going to be used other than that attributes it won't allow to create dynamic attributes.
+** Django
+*** For installing,  sudo pip3 install django
+*** What’s the difference between a project and an app? An app is a Web application that does something – e.g., a Weblog system, a database of public records or a simple poll app. A project is a collection of configuration and apps for a particular website. A project can contain multiple apps. An app can be in multiple projects.
+*** you  should always use include() when you include other URL patterns. admin.site.urls is the only exception to this
+*** If you’re using a database besides SQLite, make sure you’ve created a database by this point. Do that with “CREATE DATABASE database_name;” within your database’s interactive prompt. Also make sure that the database user provided in mysite/settings.py has “create database” privileges. This allows automatic creation of a test database which will be needed in a later tutorial. If you’re using SQLite, you don’t need to create anything beforehand - the database file will be created automatically when it is needed.
+*** for defining models , different types of fields are required. refer : https://docs.djangoproject.com/en/2.0/ref/models/fields/
+*** python3 manage.py makemigrations polls : By running makemigrations, you’re telling Django that you’ve made some changes to your models (in this case, you’ve made new ones) and that you’d like the changes to be stored as a migration
+*** If you’re interested, you can also run python manage.py check; this checks for any problems in your project without making migrations or touching the database.
+*** The migrate command takes all the migrations that haven’t been applied (Django tracks which ones are applied using a special table in your database called django_migrations) and runs them against your database - essentially, synchronizing the changes you made to your models with the schema in the database.
+*** python3 manage.py makemigrations polls after including in polls app in settings.py
+*** python3 manage.py sqlmigrate polls 0001 -> to get an overview of SQL operations what all its going to do in the above migration
+*** if happy with all the SQL operations then apply migrate command.
+*** while defining a model every class should have models.Model as their first arg where from django.db import models
+*** q = Question(question_text="What's new?", pub_date=timezone.now()) for making an object
+**** q.save() to update /add
+**** q.delete() to delete the record
+**** Question.objects.all() TO  see all objects in Question table
+**** Question.objects.filter(id=1) to filter records
+*** https://docs.djangoproject.com/en/2.0/topics/db/queries/ for help with queries
+*** You created a foreign key on Choice which relates each one to a Question.So, each Choice explicitly has a question field, which you declared in the model.Django's ORM follows the relationship backwards from Question too, automatically generating a field on each instance called foo_set where Foo is the model with a ForeignKey field to that model.
+*** choice_set is a RelatedManager which can create querysets of Choice objects which relate to the Question instance, e.g. q.choice_set.all() choice_set is a RelatedManager which can create querysets of Choice objects which relate to the Question instance, e.g. q.choice_set.all()
+*** Each view is responsible for doing one of two things: returning an HttpResponse object containing the content for the requested page, or raising an exception such as Http404. The rest is up to you.
+***  By convention DjangoTemplates looks for a “templates” subdirectory in each of the INSTALLED_APPS.
+*** The get_object_or_404() function takes a Django model as its first argument and an arbitrary number of keyword arguments, which it passes to the get() function of the model’s manager. It raises Http404 if the object doesn’t exist. This is preferred because if the query returned nothing then it will itself raise an 404 and we dont have to put the code in try-except blocks
+*** To comment-out part of a line in a template, use the comment syntax: {# #}.
+*** for templating in django refer : https://docs.djangoproject.com/en/2.0/ref/templates/language/
+*** If you use {% extends %} in a template, it must be the first template tag in that template. Template inheritance won’t work, otherwise
+*** block tag acts like optional param in templates. one can inherit and override the block of the sub class.
+*** for testing another special database is created in Django.
+*** while writing test in shell, it doesn't create a separate test db and runs the test against the local db.
