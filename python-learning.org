@@ -120,3 +120,14 @@ But the re.findall() function only returned three matches. Specifically, it retu
 *** block tag acts like optional param in templates. one can inherit and override the block of the sub class.
 *** for testing another special database is created in Django.
 *** while writing test in shell, it doesn't create a separate test db and runs the test against the local db.
+** Python Tricks: A Buffet of Awesome Python Features Book
+*** assert statement: assert 0<=x <= 10 .This will not allow if x>10,it will throw an assertError.However this should only be used in development mode and not functions shouldn't use this as a validator for the function because it can skipped using advanced optimization mode and also many other ways.
+*** Instead of ['x','y'] use ['x',\n,'y',] # make new lines between every element is a good practice and also put a , after the end of the last element so that when you add the element you won't get an error and also git diff would be clean.
+*** with statement: it should be used for resource handling in python ,like in semaphores,opening a file,etc.The internal implementation of the with is of try: finally : block.so if you want to open a file ,open it with 'with' statement as it will automatically close the file in finally block.
+*** to support "with" statements for your own use case ,these are called Context Manager.Basically you have to define two private methods __enter__ and __exit__ in your class ,and Python will call it automatically in their respective time.this is how the statement would support with statement.Also another method is the context utility library
+*** from My_module import *, is known as wildcard import and should be avoided.
+*** _var - trailing underscore before var name is a convention by python programmers indicating that it's a private variable /function .However one can still access the function or var ,as it's only a convention and not followed by python compiler. _var and functions would fail import in wildcard import but in normal import it would work.
+*** adding a __var : double underscore trailing before var name , the python interpreter does name mangling with it.So suppose self.__a =1 is defined in the dict ,it would show as _ClassName__a ,this is how the interpreter applies the name mangling and user cannot override the variable or access it easily. Double underscores are often referred as dunders.
+*** _ is used as a not care variable in for loops or also for the last evaluated statement in NREPL
+*** % operator for substituting substring in the string.
+*** from string import Template for templatization.
