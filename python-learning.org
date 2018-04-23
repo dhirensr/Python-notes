@@ -131,3 +131,24 @@ But the re.findall() function only returned three matches. Specifically, it retu
 *** _ is used as a not care variable in for loops or also for the last evaluated statement in NREPL
 *** % operator for substituting substring in the string.
 *** from string import Template for templatization.
+*** Lambdas in python act like an anonymous functions of clojure.They explicitly return the last statements after computation
+*** decorators in python can be used for logging,debugging purposes.If you want to apply a decorator to a function just write @decorator-name above the def of the function.if you write multiple decorators on the function then bottom -up applying of decorators take place.
+*** functools.decorators can be used for retaining the metadata of the decorator which is lost when created a new object of applied decorator.
+*** as a debugging practice,one should always use functools.wraps helper in the decorators to carry metadata.
+*** *args and **kwargs lets you write a functions with any number of variables.args collects extra arguments in  a tuple and kwargs collects the extra keyword in a dictionary.
+*** Putting a * before an iterable item in function call will unpack it and pass as seperate elements.
+for example : b=[1,0,1] instead of doing f(b[0],b[1]) we can directly write f(*b)
+*** for unpacking a dict we can used **.
+*** for lazy vs greedy regex matching:  http://www.learningaboutelectronics.com/Articles/Greedy-and-lazy-matching-in-Python-with-regular-expressions.php
+*** f' - in python 3.6 + introduced for formatting string.for eg:
+age=42
+f'This guy is {age} year's old'
+*** if the class doesn't has an __str__ method ,then python looks back for __repr__ method and it would use that for print and object ref purposes.
+*** One can just make his own custom exception so that its easier to debug by reading the exception name instead of reading valueError,TypeError ,etc
+for eg: class NameTooShortError(ValueError):
+              pass
+
+      def validate(name):
+          if len(name)<10:
+              raise NameTooShortError(name)
+This would result in a good error log and also the other developer will find easier to understand.
