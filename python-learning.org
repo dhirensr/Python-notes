@@ -152,3 +152,5 @@ for eg: class NameTooShortError(ValueError):
           if len(name)<10:
               raise NameTooShortError(name)
 This would result in a good error log and also the other developer will find easier to understand.
+*** For making shallow/deep copy there is module name copy we can just import that and make shallow or deep copy accordingly.Many of the python inbuilt functions make shallow copies which are not good implementation wise.
+***
