@@ -1,0 +1,121 @@
+* #Python
+** Decorators
+*** Decorator is a function that takes another function and extends the behavior of the latter function without explicitly modifying it.Eg:
+    def my_decorator(some_function):
+
+    def wrapper():
+
+        num = 10
+
+        if num == 10:
+            print("Yes!")
+        else:
+            print("No!")
+
+        some_function()
+
+        print("Something is happening after some_function() is called.")
+
+    return wrapper
+
+
+   def just_some_function():
+      print("Wheee!")
+
+   just_some_function = my_decorator(just_some_function)
+
+   just_some_function()
+
+   O/P:
+   Yes!
+   Wheee!
+   Something is happening after some_function() is called.
+*** Syntactic Sugar: Python allows you to simplify the calling of decorators using the @ symbol (this is called “pie” syntax).
+    Continuing upper eg:
+    from decorator07 import my_decorator
+
+
+    @my_decorator
+    def just_some_function():
+    print("Wheee!")
+
+    just_some_function()
+*** Real World eg:
+from functools import wraps
+from flask import g, request, redirect, url_for
+
+
+def login_required(f):
+    @wraps(f)
+    def decorated_function(*args, **kwargs):
+        if g.user is None:
+            return redirect(url_for('login', next=request.url))
+        return f(*args, **kwargs)
+    return decorated_function
+
+
+@app.route('/secret')
+@login_required
+def secret():
+    pass
+*** @functools.wraps: This simply preserves the metadata of the wrapped function. This is a convenience function for invoking update_wrapper() as a function decorator when defining a wrapper function. The main intended use for this function is in decorator functions which wrap the decorated function and return the wrapper. If the wrapper function is not updated, the metadata of the returned function will reflect the wrapper definition rather than the original function definition, which is typically less than helpful.
+Example:
+from functools import wraps
+def my_decorator(f):
+    @wraps(f)
+   def wrapper(*args, **kwds):
+       print('Calling decorated function')
+       return f(*args, **kwds)
+    return wrapper
+
+@my_decorator
+def example():
+  """Docstring"""
+     print('Called example function')
+>>> example()
+Calling decorated function
+Called example function
+>>> example.__name__
+'example'
+>>> example.__doc__
+'Docstring'
+** Iterator vs Iterable
+*** In one perspective they are the same: You can iterate with a for loop over iterators and iterables. Every iterator is also an iterable, but not every iterable is an iterator. E.g. a list is iterable but a list is not an iterator! An iterator can be created from an iterable by using the function 'iter'. To make this possible the class of an object needs either a method '__iter__', which returns an iterator, or a '__getitem__' method with sequential indexes starting with 0. Iterators are objects with a '__next__' method, which will be used when the function 'next' is called.
+*** Internal working of 'FOR' : The for statement calls iter() on the object ( which should be a so-called container object), which it is supposed to loop over. If this call is successful, the iter call will return return an iterator object that defines the method __next__() which accesses elements of the object one at a time. The __next__() method will raise a StopIteration exception, if there are no further elements available. The for loop whill terminate as soon as it catches a StopIteration exception. You can call the __next__() method using the next() built-in function.Eg:
+cities = ["Berlin", "Vienna", "Zurich"]
+iterator_obj = iter(cities)
+print(iterator_obj)
+print(next(iterator_obj))
+print(next(iterator_obj))
+print(next(iterator_obj))
+O/P:
+34 iterable:  False
+[4, 5] iterable:  True
+(4, 5) iterable:  True
+{'a': 4} iterable:  True
+dfsdf iterable:  True
+4.5 iterable:  False
+*** If you want to add an iterator behavior to your class, you have to add the __iter__ and the __next__ method to your class. The __iter__ method returns an iterator object. If the class contains a __next__, it is enough for the __iter__ method to return self, i.e. a reference to itself:
+class Reverse:
+    """
+    Creates Iterators for looping over a sequence backwards.
+    """
+
+    def __init__(self, data):
+        self.data = data
+        self.index = len(data)
+    def __iter__(self):
+        return self
+    def __next__(self):
+        if self.index == 0:
+            raise StopIteration
+        self.index = self.index - 1
+        return self.data[self.index]
+lst = [34, 978, 42]
+lst_backwards = Reverse(lst)
+for el in lst_backwards:
+    print(el)
+O/P:
+42
+978
+34
