@@ -1,46 +1,56 @@
 * #Python
 ** Decorators
 *** Decorator is a function that takes another function and extends the behavior of the latter function without explicitly modifying it.Eg:
-    def my_decorator(some_function):
+#+BEGIN_SRC python
 
-    def wrapper():
+  def my_decorator(some_function):
 
-        num = 10
+      def wrapper():
 
-        if num == 10:
-            print("Yes!")
-        else:
-            print("No!")
+          num = 10
 
-        some_function()
+          if num == 10:
+              print("Yes!")
+          else:
+              print("No!")
 
-        print("Something is happening after some_function() is called.")
+          some_function()
 
-    return wrapper
+          print("Something is happening after some_function() is called.")
+
+      return wrapper
 
 
-   def just_some_function():
-      print("Wheee!")
+     def just_some_function():
+        print("Wheee!")
 
-   just_some_function = my_decorator(just_some_function)
+  just_some_function = my_decorator(just_some_function)
 
-   just_some_function()
+  just_some_function()
 
-   O/P:
-   Yes!
-   Wheee!
-   Something is happening after some_function() is called.
+     O/P:
+     Yes!
+     Wheee!
+     Something is happening after some_function() is called.
+
+#+END_SRC
 *** Syntactic Sugar: Python allows you to simplify the calling of decorators using the @ symbol (this is called “pie” syntax).
     Continuing upper eg:
-    from decorator07 import my_decorator
+#+BEGIN_SRC python
 
+from decorator07 import my_decorator
 
     @my_decorator
     def just_some_function():
     print("Wheee!")
 
     just_some_function()
+
+#+END_SRC
+
 *** Real World eg:
+#+BEGIN_SRC python
+
 from functools import wraps
 from flask import g, request, redirect, url_for
 
@@ -58,8 +68,11 @@ def login_required(f):
 @login_required
 def secret():
     pass
-*** @functools.wraps: This simply preserves the metadata of the wrapped function. This is a convenience function for invoking update_wrapper() as a function decorator when defining a wrapper function. The main intended use for this function is in decorator functions which wrap the decorated function and return the wrapper. If the wrapper function is not updated, the metadata of the returned function will reflect the wrapper definition rather than the original function definition, which is typically less than helpful.
-Example:
+
+#+END_SRC
+*** @functools.wraps: This simply preserves the metadata of the wrapped function. This is a convenience function for invoking update_wrapper() as a function decorator when defining a wrapper function. The main intended use for this function is in decorator functions which wrap the decorated function and return the wrapper. If the wrapper function is not updated, the metadata of the returned function will reflect the wrapper definition rather than the original function definition, which is typically less than helpful.Example:
+#+BEGIN_SRC python
+
 from functools import wraps
 def my_decorator(f):
     @wraps(f)
@@ -79,9 +92,14 @@ Called example function
 'example'
 >>> example.__doc__
 'Docstring'
+
+#+END_SRC
+
 ** Iterator vs Iterable
 *** In one perspective they are the same: You can iterate with a for loop over iterators and iterables. Every iterator is also an iterable, but not every iterable is an iterator. E.g. a list is iterable but a list is not an iterator! An iterator can be created from an iterable by using the function 'iter'. To make this possible the class of an object needs either a method '__iter__', which returns an iterator, or a '__getitem__' method with sequential indexes starting with 0. Iterators are objects with a '__next__' method, which will be used when the function 'next' is called.
 *** Internal working of 'FOR' : The for statement calls iter() on the object ( which should be a so-called container object), which it is supposed to loop over. If this call is successful, the iter call will return return an iterator object that defines the method __next__() which accesses elements of the object one at a time. The __next__() method will raise a StopIteration exception, if there are no further elements available. The for loop whill terminate as soon as it catches a StopIteration exception. You can call the __next__() method using the next() built-in function.Eg:
+#+BEGIN_SRC python
+
 cities = ["Berlin", "Vienna", "Zurich"]
 iterator_obj = iter(cities)
 print(iterator_obj)
@@ -95,7 +113,11 @@ O/P:
 {'a': 4} iterable:  True
 dfsdf iterable:  True
 4.5 iterable:  False
+
+#+END_SRC
 *** If you want to add an iterator behavior to your class, you have to add the __iter__ and the __next__ method to your class. The __iter__ method returns an iterator object. If the class contains a __next__, it is enough for the __iter__ method to return self, i.e. a reference to itself:
+#+BEGIN_SRC python
+
 class Reverse:
     """
     Creates Iterators for looping over a sequence backwards.
@@ -119,3 +141,54 @@ O/P:
 42
 978
 34
+
+#+END_SRC
+** Merging two dictionaries
+*** In Python 3.5+
+#+BEGIN_SRC python
+  x = {'a': 1, 'b': 2}
+  y = {'b': 3, 'c': 4}
+
+  z = {**x, **y}
+
+  >>> z
+  {'c': 4, 'a': 1, 'b': 3}
+#+END_SRC
+
+*** In Python 2.x
+#+BEGIN_SRC python
+  z = dict(x, **y)
+  >>> z
+  {'a': 1, 'c': 4, 'b': 3}
+
+#+END_SRC
+** Test multiple flags at once
+#+BEGIN_SRC python
+
+x, y, z = 0, 1, 0
+
+if x == 1 or y == 1 or z == 1:
+    print('passed')
+
+if 1 in (x, y, z):
+    print('passed')
+
+# These only test for truthiness:
+if x or y or z:
+    print('passed')
+
+if any((x, y, z)):
+    print('passed')
+
+#+END_SRC
+** ASCII <-> Int <-> String
+*** ord(char) -> converts ASCII char to int
+    #+BEGIN_SRC python
+    >>> ord("a")
+    97
+    #+END_SRC
+*** chr(int) -> converts int to ASCII char
+    #+BEGIN_SRC python
+    >>> chr(97)
+    'a'
+    #+END_SRC
