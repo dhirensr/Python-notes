@@ -153,4 +153,25 @@ for eg: class NameTooShortError(ValueError):
               raise NameTooShortError(name)
 This would result in a good error log and also the other developer will find easier to understand.
 *** For making shallow/deep copy there is module name copy we can just import that and make shallow or deep copy accordingly.Many of the python inbuilt functions make shallow copies which are not good implementation wise.
-***
+*** Use abc module which stands for ABSTRACT BASE CLASS,it ensures that the subclass is properly designed according to be baseclass and no methods are missed.
+*** namedtuples are just an implementation of tuples in python ,but they are memory efficient and also has some private functions which start with _functionname which are easy and ready to use. they can be found at collection.namedtuple
+***  Class and Instance variables:
+#+BEGIN_SRC python
+  class Dog:
+      num_legs=4 #class_Variable
+      def __init__(self,name):
+          self.name= name #instance variable.
+jack = Dog('Jack')
+jill = Dog('Jill')
+
+#if we do Dog.num_legs=6 then both jack and jill instances will have num_legs as 6
+jill.num_legs=6
+#this will only make Jill's instance of num_legs as 6
+jack.num_legs, jack.__class__.num_legs
+=> 6,4
+#note that num_legs is only getting overrriden in the instance variable and  not the actual class variables
+#that could lead to bugs sometimes as it's just a local instance variable.
+#also the instance variables are not accessible by class namedtuple
+Dog.name throws an AttributeError exception
+
+#+END_SRC
