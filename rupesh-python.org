@@ -1,4 +1,4 @@
-
+* General tips
 1.  set(string) => distinct dict of chars
     for eg =  set("abcda")
              Out[237]: {'a', 'b', 'c', 'd'}
@@ -431,3 +431,42 @@ def display2(name,age):
 In [149]: display2("rupesh", 22)
 Am Here in decorator class
 name=rupeshage=22
+* tricks
+#+BEGIN_SRC python
+  1. extended unpacking =>
+
+    In [42]: a, *b, c = [1,2,3,4,5,6]
+    In [43]: b
+    Out[43]: [2, 3, 4, 5]
+    In [44]: c
+    Out[44]: 6
+    In [45]: a
+    Out[45]: 1
+
+    2. sort using multiple keys =>
+
+    In [169]: a = [["3","1","2"],["1","4","2"],["2","8","2"]]
+
+    In [170]: sorted(a, key = operator.itemgetter(1))
+    Out[170]: [['3', '1', '2'], ['1', '4', '2'], ['2', '8', '2']]
+
+    In [171]: sorted(a, key = operator.itemgetter(0))
+    Out[174]: [['1', '4', '2'], ['2', '8', '2'], ['3', '1', '2']]
+
+    In [175]: sorted(a, key = operator.itemgetter(2))
+    Out[175]: [['3', '1', '2'], ['1', '4', '2'], ['2', '8', '2']]
+
+    3. boolean is taken as an integer
+
+     a = [5,6,7,8,9]
+     print(a[True]) #prints 6
+     print(a[False]) #prints 5
+
+     4. using if-else in one line
+   =>  print(("false", "true") [0 == 0])
+   => o/p true
+
+#+END_SRC
+
+
+* For referencing DS => https://sahandsaba.com/thirty-python-language-features-and-tricks-you-may-not-know.html#use-c-style-braces-instead-of-indentation-to-denote-scopes
