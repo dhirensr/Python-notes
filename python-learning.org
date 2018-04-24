@@ -175,3 +175,9 @@ jack.num_legs, jack.__class__.num_legs
 Dog.name throws an AttributeError exception
 
 #+END_SRC
+*** MappingProxyType(dict) will form a view only copy of that dictionary and wont allow to perform write operations.
+*** list in python as implemented as dynamic arrays .Also lists can hold arbitrary data types.
+*** tuples in python are immutable so del and append won't work for tuples however ,if used + to add to a tuple ,it will create a new copy of the tuple.
+*** one can also use array.array ,it functions similar to list in python ,but the difference is that it's the typed array ,meaning one has to give the datatype of the elements at start.Because of this it is space efficient,as compiler already knows how much space to be utilized for the data.
+*** Strings in python are also immutable .Any string functions one applies on the string,it always creates a new string.
+*** Bytes are also a datatype from python3 onwards.Basically,they include numbers from 0 to 255.Also if one wants an array of bytes then bytesarray can be used and also its mutable.so it supports operations of deleting,adding,etc
