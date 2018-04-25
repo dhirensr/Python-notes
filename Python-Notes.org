@@ -192,3 +192,76 @@ if any((x, y, z)):
     >>> chr(97)
     'a'
     #+END_SRC
+** SORTING
+*** A simple ascending sort is very easy: just call the sorted() function. It returns a new sorted list:
+    #+BEGIN_SRC python
+    >>> sorted([5, 2, 3, 1, 4])
+    [1, 2, 3, 4, 5]
+    #+END_SRC
+*** You can also use the list.sort() method. It modifies the list in-place (and returns None to avoid confusion). Usually it’s less convenient than sorted() - but if you don’t need the original list, it’s slightly more efficient.
+    #+BEGIN_SRC python
+    >>> a = [5, 2, 3, 1, 4]
+    >>> a.sort()
+    >>> a
+    [1, 2, 3, 4, 5]
+    #+END_SRC
+*** Another difference is that the list.sort() method is only defined for lists. In contrast, the sorted() function accepts any iterable.
+    #+BEGIN_SRC python
+    >>> sorted({1: 'D', 2: 'B', 3: 'B', 4: 'E', 5: 'A'})
+    [1, 2, 3, 4, 5]
+    #+END_SRC
+*** Sorting complex objects using object's indices
+    #+BEGIN_SRC python
+    >>> student_tuples = [
+            ('john', 'A', 15),
+            ('jane', 'B', 12),
+            ('dave', 'B', 10),
+     ]
+    >>> sorted(student_tuples, key=lambda student: student[2])   # sort by age
+    [('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]
+    #+END_SRC
+*** Sorting complex objects with named attributes
+    #+BEGIN_SRC python
+>>> class Student:
+...     def __init__(self, name, grade, age):
+...         self.name = name
+...         self.grade = grade
+...         self.age = age
+...     def __repr__(self):
+...         return repr((self.name, self.grade, self.age))
+
+>>> student_objects = [
+...     Student('john', 'A', 15),
+...     Student('jane', 'B', 12),
+...     Student('dave', 'B', 10),
+... ]
+>>> sorted(student_objects, key=lambda student: student.age)   # sort by age
+[('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]
+    #+END_SRC
+*** Sorting using Operator module functions
+    The operator module has itemgetter(), attrgetter(), and a methodcaller() function.
+    #+BEGIN_SRC python
+    >>> from operator import itemgetter, attrgetter
+
+    >>> sorted(student_tuples, key=itemgetter(2))
+    [('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]
+
+    >>> sorted(student_objects, key=attrgetter('age'))
+    [('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]
+    #+END_SRC
+    The operator module functions allow multiple levels of sorting. For example, to sort by grade then by age:
+    #+BEGIN_SRC python
+    >>> sorted(student_tuples, key=itemgetter(1,2))
+    [('john', 'A', 15), ('dave', 'B', 10), ('jane', 'B', 12)]
+
+    >>> sorted(student_objects, key=attrgetter('grade', 'age'))
+    [('john', 'A', 15), ('dave', 'B', 10), ('jane', 'B', 12)]
+    #+END_SRC
+*** Ascending and Descending
+    Both list.sort() and sorted() accept a reverse parameter with a boolean value. This is used to flag descending sorts. For example, to get the student data in reverse age order:
+    #+BEGIN_SRC python
+    >>> sorted(student_tuples, key=itemgetter(2), reverse=True)
+    [('john', 'A', 15), ('jane', 'B', 12), ('dave', 'B', 10)]
+    >>> sorted(student_objects, key=attrgetter('age'), reverse=True)
+    [('john', 'A', 15), ('jane', 'B', 12), ('dave', 'B', 10)]
+    #+END_SRC
