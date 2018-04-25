@@ -265,3 +265,16 @@ if any((x, y, z)):
     >>> sorted(student_objects, key=attrgetter('age'), reverse=True)
     [('john', 'A', 15), ('jane', 'B', 12), ('dave', 'B', 10)]
     #+END_SRC
+** Access one element at a time in List
+*** Use *list to access one element at a time
+    #+BEGIN_SRC python
+    a=[1,2,3,4,5]
+    print(*a)
+    1 2 3 4 5
+    #+END_SRC
+** Itertools.groupby
+*** Make an iterator that returns consecutive keys and groups from the iterable. The key is a function computing a key value for each element. If not specified or is None, key defaults to an identity function and returns the element unchanged. Generally, the iterable needs to already be sorted on the same key function.
+    #+BEGIN_SRC python
+    [k for k, g in groupby('AAAABBBCCDAABBB')] --> A B C D A B
+    [list(g) for k, g in groupby('AAAABBBCCD')] --> AAAA BBB CC D
+    #+END_SRC
