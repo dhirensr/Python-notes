@@ -181,3 +181,52 @@ Dog.name throws an AttributeError exception
 *** one can also use array.array ,it functions similar to list in python ,but the difference is that it's the typed array ,meaning one has to give the datatype of the elements at start.Because of this it is space efficient,as compiler already knows how much space to be utilized for the data.
 *** Strings in python are also immutable .Any string functions one applies on the string,it always creates a new string.
 *** Bytes are also a datatype from python3 onwards.Basically,they include numbers from 0 to 255.Also if one wants an array of bytes then bytesarray can be used and also its mutable.so it supports operations of deleting,adding,etc
+*** NamedTuples are memory efficient also and also are same implementation of tuples.
+#+BEGIN_SRC python
+  from collections import namedtuple
+  p1=namedtuple('Point','x y z')(1,2,3)
+  p2=(1,2,3) #normal tuple
+
+#+END_SRC
+*** Frozensets are nothing but immutable sets which does not support add,delete because they are immutable.
+*** Stack (LIFO) in python can be implemented in multiple ways.
+#+BEGIN_SRC python
+a=[] #stack
+a.append('eat')
+a.append('code')
+a=['eat','code']
+a.pop()
+=> 'code'
+
+#another implementation of stacks is using deque
+from collections import deque
+s=deque()
+s.append('eat')
+s.pop()
+=> 'eat'
+#the only difference between the two is that deque is implemented as a doubly linked list ,and so the item can be removed from front and back also ,so it can act as a queue and stack both.
+# the disadvantage is that it has a poor performance of O(n) for randomly accessing middle element of the stack
+#overall deque is much better than the normal python list implementation in terms of complexity .
+
+#+END_SRC
+*** Queue (FIFO) in python can be implemented in multiple ways.
+#+BEGIN_SRC python
+a=[]
+a.append('eat')
+a.pop(0) #this implementation is very slow as moving 1 element with shift all other elements hence it takes O(n) time.
+
+b=deque()
+b.append('eat')
+b.popleft() #this is recommended to be used as it is fast and has a different method to handle for queue and different for implementing stack
+
+#+END_SRC
+*** for priority queues one can use heapq or queue.PriorityQueue.
+*** for defining our own generator:
+#+BEGIN_SRC python
+gener_exp = ('hello' for i in range(3))
+#this will return generator object
+list_comp = ['hello' for i in range(3))]
+=> ['hello','hello','hello']
+#generators are calculated on the fly when next(gener_exp) is called
+
+#+END_SRC
