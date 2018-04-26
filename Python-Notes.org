@@ -278,3 +278,15 @@ if any((x, y, z)):
     [k for k, g in groupby('AAAABBBCCDAABBB')] --> A B C D A B
     [list(g) for k, g in groupby('AAAABBBCCD')] --> AAAA BBB CC D
     #+END_SRC
+** Itertools.permutations
+*** Return successive r length permutations of elements in the iterable.If r is not specified or is None, then r defaults to the length of the iterable and all possible full-length permutations are generated.Permutations are emitted in lexicographic sort order. So, if the input iterable is sorted, the permutation tuples will be produced in sorted order.Elements are treated as unique based on their position, not on their value. So if the input elements are unique, there will be no repeat values in each permutation.
+    #+BEGIN_SRC python
+    permutations('ABCD', 2) --> AB AC AD BA BC BD CA CB CD DA DB DC
+    permutations(range(3)) --> 012 021 102 120 201 210
+    #+END_SRC
+** Itertools.combinations
+*** Return r length subsequences of elements from the input iterable.Combinations are emitted in lexicographic sort order. So, if the input iterable is sorted, the combination tuples will be produced in sorted order.Elements are treated as unique based on their position, not on their value. So if the input elements are unique, there will be no repeat values in each combination.
+    #+BEGIN_SRC python
+    combinations('ABCD', 2) --> AB AC AD BC BD CD
+    combinations(range(4), 3) --> 012 013 023 123
+    #+END_SRC
