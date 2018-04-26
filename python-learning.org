@@ -74,7 +74,6 @@ But the re.findall() function only returned three matches. Specifically, it retu
 *** we can access the global variables by using global keyword. like global a would give the value of a global variable and not local variable in  a function.
 *** https://stackoverflow.com/questions/36901/what-does-double-star-asterisk-and-star-asterisk-do-for-parameters
 *** Each module can only be imported once per interpreter session or in a program or script. If you change a module and if you want to reload it, you must restart the interpreter again.
-***
 *** span gives the string index end and start position matched with regexp with function re.search.
 ***  t="A fat cat doesn't eat oat but a rat eats bats.  mo = re.findall("[force]at", t) -> to find all substrings of a string in python
 *** We can prevent the separation of empty strings by using None as the first argument. Now split will use the default behaviour, i.e. every substring consisting of connected whitespace characters will be taken as one separator: >>> mammon.split(None,5) here split will split first 5 times and then 6 arg will be the rest sentence.
@@ -230,3 +229,6 @@ list_comp = ['hello' for i in range(3))]
 #generators are calculated on the fly when next(gener_exp) is called
 
 #+END_SRC
+*** dict_name.get(keyname,default_value) => get is useful when the dict doesn't contain the key and a default to be used instead of that.
+*** Dictionaries check for equality and compare the hash value to determine if two keys are the same. Thats why if we try to keep True,1,1.0 as keys of the dict only 1 key will stay.Because their all hash values are equal i.e 1. (True == 1 == 1.0)
+*** json.dumps(dict_name,indent=4,sort_keys=True) for pretty printing a dict or also there is a pprint module which can be used for pretty print.
