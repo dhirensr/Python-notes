@@ -290,3 +290,44 @@ if any((x, y, z)):
     combinations('ABCD', 2) --> AB AC AD BC BD CD
     combinations(range(4), 3) --> 012 013 023 123
     #+END_SRC
+** Regex
+*** Searching substring
+    #+BEGIN_SRC python
+    >>> import re
+    >>> x = re.search("cat","A cat and a rat can't be friends.")
+    >>> print(x)
+    <_sre.SRE_Match object at 0x7fd4bf238238>
+    >>> x = re.search("cow","A cat and a rat can't be friends.")
+    >>> print(x)
+    None
+    #+END_SRC
+*** Searching any character
+   The syntax of regular expressions supplies a metacharacter ".", which is used like a placeholder for "any character".
+   #+BEGIN_SRC python
+
+   In [126]: re.search(".ello","Hello")
+   Out[157]: <_sre.SRE_Match object; span=(0, 5), match='Hello'>
+
+   In [158]: re.search(".ello"," ello")
+   Out[161]: <_sre.SRE_Match object; span=(0, 5), match=' ello'>
+
+   In [162]: re.search(".ello","@ello")
+   Out[165]: <_sre.SRE_Match object; span=(0, 5), match='@ello'>
+
+   In [166]: re.search(".ello","ello")
+   #+END_SRC
+*** Searching within a character class
+    Square brackets, "[" and "]", are used to include a character class. [xyz] means e.g. either an "x", an "y" or a "z".
+    #+BEGIN_SRC python
+    In [70]: re.search("S[abc]chin","Sachin")
+    Out[122]: <_sre.SRE_Match object; span=(0, 6), match='Sachin'>
+
+    In [123]: re.search("S[abc]chin","Sbchin")
+    Out[123]: <_sre.SRE_Match object; span=(0, 6), match='Sbchin'>
+
+    In [124]: re.search("S[abc]chin","Scchin")
+    Out[124]: <_sre.SRE_Match object; span=(0, 6), match='Scchin'>
+
+    In [125]: re.search("S[abc]chin","Sdchin")
+    #+END_SRC
+*** Instead of a choice between two characters, we often need a choice between larger character classes. We might need e.g. a class of letters between "a" and "e" or between "0" and "5".To manage such character classes the syntax of regular expressions supplies a metacharacter "-". [a-e] a simplified writing for [abcde] or [0-5] denotes [012345].So instead of [ABCDEFGHIJKLMNOPQRSTUVWXYZ] we can write [A-Z]. If this is not convincing: Write an expression for the character class "any lower case or uppercase letter" [A-Za-z]
