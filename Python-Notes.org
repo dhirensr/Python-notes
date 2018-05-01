@@ -350,6 +350,16 @@ if any((x, y, z)):
     In [125]: re.search("S[abc]chin","Sdchin")
     #+END_SRC
 *** Instead of a choice between two characters, we often need a choice between larger character classes. We might need e.g. a class of letters between "a" and "e" or between "0" and "5".To manage such character classes the syntax of regular expressions supplies a metacharacter "-". [a-e] a simplified writing for [abcde] or [0-5] denotes [012345].So instead of [ABCDEFGHIJKLMNOPQRSTUVWXYZ] we can write [A-Z]. If this is not convincing: Write an expression for the character class "any lower case or uppercase letter" [A-Za-z]
+*** Find alternate consecutive repeating characters
+    #+BEGIN_SRC python
+
+		In [265]: re.findall(r'(?=((\d))\d\2)','121426')
+		Out[265]: [('1', '1')]
+
+		In [266]: re.findall(r'(?=((\d))\d\2)','552523')
+		Out[266]: [('5', '5'), ('2', '2')]
+
+    #+END_SRC
 ** Get() Method
 *** When "get()" is called it checks if the given key exists in the dict.If it does exist, the value for that key is returned.If it does not exist then the value of the default argument is returned instead.
     #+BEGIN_SRC python
