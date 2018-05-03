@@ -399,3 +399,41 @@ def greeting(userid):
 		>>> my_car.color = 'blue'
 		AttributeError: "can't set attribute"
     #+END_SRC
+** Json.dumps
+*** Representing json in a better way(similiar to pprint)
+    #+BEGIN_SRC python
+
+		In [1]: a = {'a':23,'b':42,'c':1224}
+
+		In [44]: a
+		Out[44]: {'a': 23, 'b': 42, 'c': 1224}
+
+		In [45]: import json
+
+		In [51]: print(json.dumps(a,indent =4))
+		{
+		    "a": 23,
+		    "b": 42,
+		    "c": 1224
+		}
+
+		In [96]: print(json.dumps(a,indent =4,sort_keys=True))
+		{
+		    "a": 23,
+		    "b": 42,
+		    "c": 1224
+		}
+
+		In [115]: print(json.dumps(a,indent =1,sort_keys=True))
+		{
+		 "a": 23,
+		 "b": 42,
+		 "c": 1224
+		}
+		In [203]: print(json.dumps({'zll':'yup','expert':'dhiren'},indent=4,sort_keys=True))
+		{
+		    "expert": "dhiren",
+		    "zll": "yup"
+		}
+
+    #+END_SRC
