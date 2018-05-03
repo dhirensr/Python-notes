@@ -466,7 +466,42 @@ name=rupeshage=22
    =>  print(("false", "true") [0 == 0])
    => o/p true
 
+     5. eg => a = [1,2,3,4,5,6]
+         if you want result => [[1,2,3],[2,3,4],[3,4,5] ...]
+     ans = > [a[n:n+3] for n in range(0, len(a))]
 #+END_SRC
 
 
+
+
 * For referencing DS => https://sahandsaba.com/thirty-python-language-features-and-tricks-you-may-not-know.html#use-c-style-braces-instead-of-indentation-to-denote-scopes
+
+* decorator example =>
+
+#+BEGIN_SRC
+def deco_func(some_func):
+    def w_func():
+        print("in w_func")
+        some_func()
+        print("after some_func")
+    return w_func
+
+
+@deco_func
+def my_func():
+    print("in my_func")
+
+
+print(my_func())
+
+
+#+END_SRC
+
+output =>
+in w_func
+in my_func
+after some_func
+None
+
+* find consecutive occurrences of value in list
+https://codereview.stackexchange.com/questions/132066/finding-consecutive-occurrences-of-a-value-in-an-array
