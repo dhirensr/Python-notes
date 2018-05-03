@@ -505,3 +505,19 @@ None
 
 * find consecutive occurrences of value in list
 https://codereview.stackexchange.com/questions/132066/finding-consecutive-occurrences-of-a-value-in-an-array
+* Machine-learning
+** Regression
+*** what is regression?
+     take continuous data and figure out best fit line to that data. Regression is used in stock prices.
+*** To get dummy dataset
+     import quandl and use quandl.get('ticker_name') eg => WIKI/GOOGL from Quandl.com
+*** To fill missing values
+     df.fillna(value, inplace=True), inplace to operate on DataFrame in place
+     You may wish to simply exclude labels from a data set which refer to missing data
+     df.dropna(inplace=True)
+*** Convension to follow
+     X = features and y = label
+*** To drop column from dataset
+     X = df.drop(['column_name'],count_of_col_to_drop)
+     not dropeed from df :)
+*** sklearn.preprocessing
