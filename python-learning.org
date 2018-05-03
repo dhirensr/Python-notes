@@ -232,3 +232,17 @@ list_comp = ['hello' for i in range(3))]
 *** dict_name.get(keyname,default_value) => get is useful when the dict doesn't contain the key and a default to be used instead of that.
 *** Dictionaries check for equality and compare the hash value to determine if two keys are the same. Thats why if we try to keep True,1,1.0 as keys of the dict only 1 key will stay.Because their all hash values are equal i.e 1. (True == 1 == 1.0)
 *** json.dumps(dict_name,indent=4,sort_keys=True) for pretty printing a dict or also there is a pprint module which can be used for pretty print.
+** Machine Learning -https://pythonprogramming.net/machine-learning-tutorial-python-introduction/
+*** fillna is a pandas method which is used to replace the not a number in the data.
+#+BEGIN_SRC python
+df.fillna(-9999,inplace=True)
+
+#replace not a number with -9999
+
+#+END_SRC
+*** cross_validation in scikitlearn to split the data set into training and testing dataset.
+*** n_jobs  allows us to control how many CPU's would be used for training the model.Not all algorithms support this.
+*** https://scikit-learn.org/stable/tutorial/machine_learning_map/ -useful for selecting the algorithm
+***  preprocessing sklearn-In practice we often ignore the shape of the distribution and just transform the data to center it by removing the mean value of each feature, then scale it by dividing non-constant features by their standard deviation.
+*** matplotlib is only for graphical part.
+*** to import the model after training we can use pickle to get the model file and no need to train it again and again
