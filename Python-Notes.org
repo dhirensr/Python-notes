@@ -437,3 +437,10 @@ def greeting(userid):
 		}
 
     #+END_SRC
+* #Machine-Learning
+*** Regression is taking continous data,find the equation that best fits the data, and be able forecast out a specific value.
+*** Regression is a form of supervised machine learning, which is where the scientist teaches the machine by showing it features and then showing it what the correct answer is, over and over, to teach the machine. Once the machine is taught, the scientist will usually "test" the machine on some unseen data, where the scientist still knows what the correct answer is, but the machine doesn't. The machine's answers are compared to the known answers, and the machine's accuracy can be measured. If the accuracy is high enough, the scientist may consider actually employing the algorithm in the real world.
+*** With supervised learning, you have features and labels.
+    The features are the descriptive attributes, and the label is what you're attempting to predict or forecast. Another common example with regression might be to try to predict the dollar value of an insurance policy premium for someone. The company may collect your age, past driving infractions, public criminal record, and your credit score for example. The company will use past customers, taking this data, and feeding in the amount of the "ideal premium" that they think should have been given to that customer, or they will use the one they actually used if they thought it was a profitable amount.
+*** Fill NaN Data:
+    You have a few choice here regarding how to handle missing data. You can't just pass a NaN (Not a Number) datapoint to a machine learning classifier, you have to handle for it. One popular option is to replace missing data with -99,999. With many machine learning classifiers, this will just be recognized and treated as an outlier feature. You can also just drop all feature/label sets that contain missing data, but then you're maybe leaving a lot of data out.
