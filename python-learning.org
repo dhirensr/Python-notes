@@ -233,6 +233,7 @@ list_comp = ['hello' for i in range(3))]
 *** Dictionaries check for equality and compare the hash value to determine if two keys are the same. Thats why if we try to keep True,1,1.0 as keys of the dict only 1 key will stay.Because their all hash values are equal i.e 1. (True == 1 == 1.0)
 *** json.dumps(dict_name,indent=4,sort_keys=True) for pretty printing a dict or also there is a pprint module which can be used for pretty print.
 ** Machine Learning -https://pythonprogramming.net/machine-learning-tutorial-python-introduction/
+*** features are the input and labels are the output which would machine use for classification.
 *** fillna is a pandas method which is used to replace the not a number in the data.
 #+BEGIN_SRC python
 df.fillna(-9999,inplace=True)
@@ -246,3 +247,5 @@ df.fillna(-9999,inplace=True)
 ***  preprocessing sklearn-In practice we often ignore the shape of the distribution and just transform the data to center it by removing the mean value of each feature, then scale it by dividing non-constant features by their standard deviation.
 *** matplotlib is only for graphical part.
 *** to import the model after training we can use pickle to get the model file and no need to train it again and again
+*** Linear Regression is usually used for continuous data so that the algorithm draws a best fit line of that line's equation prediction of future data can be done.( basically it does y = mx+b)
+*** To calculate the euclidean distance one can use np.linalg.norm in KNN
