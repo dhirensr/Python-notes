@@ -521,3 +521,48 @@ https://codereview.stackexchange.com/questions/132066/finding-consecutive-occurr
      X = df.drop(['column_name'],count_of_col_to_drop)
      not dropeed from df :)
 *** sklearn.preprocessing
+*** Linear regression?
+    If there is a relation between x & y then only you can use LR. Relation means line passing through or closest to all points in the dataset. That line is called Best Fit line
+    line equation =>
+    y = mx + b  where m is slope & b is y-intercept
+
+    m = mean of (x) * mean of (y) - mean of (x * y)
+        -------------------------------------
+         (mean of x)^2 - mean of (x^2)
+
+    b = mean of (y) - m * (mean of x)
+    This is how you can get best fit line
+    regression_line also called as y-hat line or best-fit line
+**** order of expression evaluation => PEMDAS(paranthesis, exponents, mul, div, add, sub)
+**** You can't get negative slope when all xs or ys positive
+**** float64 is default datatype while specifying in np.array
+     for eg => np.array([1,2,3,4,5,6], dtype=np.float64)
+**** To plot graph use
+#+BEGIN_SRC
+import matplotlib.pyplot as plt
+
+plt.scatter(xs,ys)
+plt.plot(xs, regression_line)
+plt.show()
+#+END_SRC
+**** To add style to plot
+     from matplotlib import style
+     style.use('name_of_style') eg = 'fivethirtyeight'
+**** In linear regression example calculating m & b is model of data, based on mx + b you can predict next point on regression_line
+**** To see how good our best fit line is method => R squared method or coefficient of determination
+     R squared error method =>
+      It means distance from a point to regression_line
+      denoted as e^2, why squared because to avoid outliers and negative values.
+
+
+     r^2  = 1 - SE y-hat
+               ---------
+                SE mean(y)
+
+     for eg=> if R squared value is 0.8 then y-hat value = 2 & mean(y) = 10
+     that means to get higher R squared value y-hat value should not be close to mean(y)
+
+*** Classification
+**** k-nearest-neighbour algorithm(KNN)
+     uses euclidean distance algo to calculate nearest neighbours. Good for small dataset but worst for large.
+**** Most of the outliers think -99999 as a outlier follow this convention
