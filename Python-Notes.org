@@ -447,3 +447,9 @@ def greeting(userid):
 *** Pickle is serialization of python object dictionary or can be classifier. It helps save time. Instead of training classifier for every prediction,we can save the classifier after training to be used again.Its purpose is to avoid training since training is computation hungry step
 *** Operator evaluation ordering : PEMDAS - Paranthesis,Exponents,Multi,Division,Add,Sub
 *** Support Vector Machine: The objective of the Support Vector Machine is to find the best splitting boundary between data. In two dimensional space, you can think of this like the best fit line that divides your dataset. With a Support Vector Machine, we're dealing in vector space, thus the separating line is actually a separating hyperplane. The best separating hyperplane is defined as the hyperplane that contains the "widest" margin between support vectors. The hyperplane may also be referred to as a decision boundary.
+*** DataSets References:
+**** Image data: https://image-net.org/
+**** Text data: https://dumps.wikimedia.org/backup-index.html
+**** For HUGE text data: https://commoncrawl.org/
+**** Speech data: https://tatoeba.org/eng/
+**** Generally you can ask on subreddit: https://www.reddit.com/r/MachineLearning/
