@@ -249,3 +249,14 @@ df.fillna(-9999,inplace=True)
 *** to import the model after training we can use pickle to get the model file and no need to train it again and again
 *** Linear Regression is usually used for continuous data so that the algorithm draws a best fit line of that line's equation prediction of future data can be done.( basically it does y = mx+b)
 *** To calculate the euclidean distance one can use np.linalg.norm in KNN
+*** Naive bayes model should be used when data is of high dimensionality ie more features.also it assumes that the features are not related to each other. Therefore,it's easier to train the data.
+*** There are 3 flavours of Naive bayes : out of which bernaulli and 1 other is used mainly for text mining and GaussianNB can be used for regression problems.
+*** Random forests is the ensemble of the models ie each model makes some mistake in overfitting in some part of the data ,so Random forests is the ensemble of the trees.
+*** Random forests can be used for classification and regression both.(RandomFOrestClassifier and RandomFOrestRegressor)
+*** For regression problem,the output of the randomforest would be the mean of output by every single tree and in case of classification problem,its the weighted vote.
+*** If max_features for making the tree is less then more complex trees are formed and if max_features is more then more simple trees are formed .
+*** RF are easily parallized accross multiple CPUS
+*** Gradient boosted Decision trees are another ensemble method for trees.
+*** the idea in gradient boosted decision trees is that each tree is a sucessor of the previous tree ie each tree learns the mistakes from it previous trees.
+*** the parameter learning rate controls that,if the learning rate is high then it pays close attention to the mistake of the previous tree and if it's low then it doesn't care that much.
+*** If learning rate is high then it leads to complex trees and if low then simpler trees.
