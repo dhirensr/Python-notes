@@ -437,6 +437,69 @@ def greeting(userid):
 		}
 
     #+END_SRC
+** 'is' vs '=='
+"is" expressions evaluate to True if two variables point to the same object
+"==" evaluates to True if the objects referred to by the variables are equal
+Eg:
+#+BEGIN_SRC python
+
+In [1]: a = [1,2,3]
+
+In [8]: b = a
+
+In [9]: id(a)
+Out[9]: 139664634717768
+
+In [10]: id(b)
+Out[14]: 139664634717768
+
+In [15]: a is b
+Out[15]: True
+
+In [16]: a == b
+Out[16]: True
+
+In [17]: c = list(a)
+
+In [23]: id (c)
+Out[23]: 139664634611144
+
+In [24]: a == c
+Out[27]: True
+
+In [28]: a is c
+Out[31]: False
+
+#+END_SRC
+** Function argument unpacking
+#+BEGIN_SRC python
+def myfunc(x, y, z):
+    print(x, y, z)
+
+tuple_vec = (1, 0, 1)
+dict_vec = {'x': 1, 'y': 0, 'z': 1}
+
+>>> myfunc(*tuple_vec)
+1, 0, 1
+
+>>> myfunc(**dict_vec)
+1, 0, 1
+#+END_SRC
+** In-place swapping
+# Let's say we want to swap
+# the values of a and b...
+a = 23
+b = 42
+
+# The "classic" way to do it
+# with a temporary variable:
+tmp = a
+a = b
+b = tmp
+
+# Python also lets us
+# use this short-hand:
+a, b = b, a
 * #Machine-Learning
 *** Regression is taking continous data,find the equation that best fits the data, and be able forecast out a specific value.
 *** Regression is a form of supervised machine learning, which is where the scientist teaches the machine by showing it features and then showing it what the correct answer is, over and over, to teach the machine. Once the machine is taught, the scientist will usually "test" the machine on some unseen data, where the scientist still knows what the correct answer is, but the machine doesn't. The machine's answers are compared to the known answers, and the machine's accuracy can be measured. If the accuracy is high enough, the scientist may consider actually employing the algorithm in the real world.
