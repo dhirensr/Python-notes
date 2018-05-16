@@ -453,3 +453,55 @@ def greeting(userid):
 **** For HUGE text data: https://commoncrawl.org/
 **** Speech data: https://tatoeba.org/eng/
 **** Generally you can ask on subreddit: https://www.reddit.com/r/MachineLearning/
+*** Model Evaluation: Once a model is trained, the evaluation step provides critical feedback on the trained model's performance characteristics. Particularly those that might be important for your application. The results of the evaluation step, for example, might help you understand which data instances are being classified or predicted incorrectly. Which might in turn suggest better features or different kernel function or other refinements to your learning model in the feature and model refinement phase. It'll also show us how knowing more about the types of errors a learning algorithm makes can help us get a better picture of a model's predictive performance.
+*** Dummy Classifier: Dummy classifiers, again, are called that because they don't even look at the data to make a prediction. They simply use the strategy or rule of thumb that you instruct them to use, when creating them. In fact, when you create the classifier, you set the strategy argument to tell it what rule of thumb to use to make its predictions. Different strategy includes:
+1. most_frequent : predicts the most frequent label in the training set
+2. stratified : random predictions based on training set class distribution
+3. uniform : generates prediction uniformly at random
+4. constant : always predicts a constant label provided by user
+*** Confusion Matrix:
+    True          TN         FP
+    ----
+    negative
+
+    True          FN         TP
+    ----
+    positive
+             predicted   predicted
+             ---------   ---------
+             negative    positive
+*** Basic Evaluation Metrics:
+**** Accuracy : for what fractions of all instances is the classifier's prediction correct
+     Accuracy =      TN + TP
+                 -----------------
+                 TN + TP + FN + FP
+**** Classification Error : for what fractions of all instances is the classifier's prediction correct
+     Classification Error =          FN + FP      or 1 - Accuracy
+                               -----------------
+                               TN + TP + FN + FP
+**** Precision :precision is an evaluation metric that reflects the situation and is obtained by dividing the number of true positives by the sum of true positives and false positives.
+     Precision =    TP
+                 -------
+                 TP + FP
+**** Recall/Sensitivity:  Recall, also known as the true positive rate, sensitivity or probability of detection is such an evaluation metric and it's obtained by dividing the number of true positives by the sum of true positives and false negatives.
+     Recall =   TP
+              ------
+              TP + FN
+**** F1 Score: F1 score combines precision and recall into a single number. Mathematically, this is based on the harmonic mean of precision and recall using this formula.
+     F1 Score = 2 . Precision.Recall
+                     ----------------
+                     Precision+Recall
+
+              =      2.TP
+                ----------------
+                2.TP + FN + FP
+**** When to use Precision and When to use Recall?:
+It is clear that recall gives us information about a classifier’s performance with respect to false negatives (how many did we miss), while precision gives us information about its performance with respect to false positives(how many did we caught).
+
+Precision is about being precise. So even if we managed to capture only one cancer case, and we captured it correctly, then we are 100% precise.
+
+Recall is not so much about capturing cases correctly but more about capturing all cases that have “cancer” with the answer as “cancer”. So if we simply always say every case as “cancer”, we have 100% recall.
+
+So basically if we want to focus more on minimising False Negatives, we would want our Recall to be as close to 100% as possible without precision being too bad and if we want to focus on minimising False positives, then our focus should be to make Precision as close to 100% as possible.
+
+**** References: https://medium.com/greyatom/performance-metrics-for-classification-problems-in-machine-learning-part-i-b085d432082b
