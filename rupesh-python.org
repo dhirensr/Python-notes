@@ -566,3 +566,67 @@ plt.show()
 **** k-nearest-neighbour algorithm(KNN)
      uses euclidean distance algo to calculate nearest neighbours. Good for small dataset but worst for large.
 **** Most of the outliers think -99999 as a outlier follow this convention
+
+
+
+* week 3
+** Model Evaluation
+    1. imbalanced class => when data contains 95% cancer patients and only 5% non-cancer patients then predication will always predict yes for future data
+    2. Then trained & tested imbalanced dataset using SVM classifier
+    3. Then trained using dummy classifier =>
+       dummy classifier dont even look at data for making predication. They use strategy / rule of thumb
+       should not be used for real problems but does provide a useful check for comparison.
+    4. If you have a accuracy that is close to dummy classifier then it could be because there is indeed a large class imbalance
+
+** confusion matrix
+   https://medium.com/greyatom/performance-metrics-for-classification-problems-in-machine-learning-part-i-b085d432082b
+    1. used for summarizing the performance of classification algorithm
+    2.  True negative =>  TN     FP
+        True positive =>  FN     TP
+                      Predicted  Predicted
+                       negative   positive
+    3. Recall / True Positive Rate / Sensitivity / Prob of Detection = TP / (TP + FN)
+       Recall is a measure that tells us what proportion of patients that actually had cancer was diagnosed by the algorithm as having cancer. The actual positives (People having cancer are TP and FN) and the people diagnosed by the model having a cancer are TP. (Note: FN is included because the Person actually had a cancer even though the model predicted otherwise)
+
+    4. False positive Rate = FP / (TN + FP)
+
+    5. precision = TP / (TP + FP)  => (all positive points)
+       Precision is a measure that tells us what proportion of patients that we diagnosed as having cancer, actually had cancer. The predicted positives (People predicted as cancerous are TP and FP) and the people actually having a cancer are TP
+
+    6. If higher precision, then lower recall and vise versa
+    7. F1-score =>
+       We don’t really want to carry both Precision and Recall in our pockets every time we make a model for solving a classification problem. So it’s best if we can get a single score that kind of represents both Precision(P) and Recall(R).
+       F1-score => (2 * TP) / (2*TP + FN + FP)
+
+** classifier decision functions
+    1. Look how classifier performs for all possible decision thresholds. all instances above threshold will be Positive class and below will be negative class
+
+** Precision-Recall Curves
+      1. ROC curves => used for visualization method that illustrate the performance of a binary classifier
+      2. Top left corner is ideal point, False positive rate of zero & True positive rate of one
+      3. Steepness of ROC curves is imp for => Maximize the true positive rate, while minimizing the false positive rate
+      4. Area under ROC curve is measued using AUC (Area under curve)
+
+** Multi-class Evaluation
+      1. micro & macro average precision
+
+** Regression evaluation
+      1. r2_score => best possible score is 1.0 & constant prediction score is 0.0. Sometimes r2_score can be negative when fitting non-linear functions to data.
+
+** Model Selection using Evaluation Metrics (selecting best classifier)
+      1. using only cros-validation or a test set to do model selection may lead to more subtle overfitting / optimistic generalization estimates
+         instead use 3 data splits:
+         i. Training set(model building)
+         ii. Validation set(model selection)
+         iii. Test set (final evaluation)
+
+      2. steps=>
+         i. Create an initial training/test split
+         ii.Do cross-validation on training data for model/parameter selection
+         iii. Save the held-out test set for model evaluation
+
+
+* Week 4
+** Naive Bayes Classifiers
+   1. Naive means they assume that features are conditionally independent, features have little/no correlation with each other.
+** Random forests
