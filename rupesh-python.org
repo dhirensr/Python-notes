@@ -630,3 +630,44 @@ plt.show()
 ** Naive Bayes Classifiers
    1. Naive means they assume that features are conditionally independent, features have little/no correlation with each other.
 ** Random forests
+
+* Algorithm for ZPD problem
+** Database changes =
+   1. Player =
+      i. zpd
+      ii. current_level
+      iii. right_ans?
+      iv. wrong_counter
+
+   2. Misc =
+      i.step_size_value = 3
+      ii. max_threshold_value = 5
+
+** Algorithm
+   1. Set initial values
+      zpd = 1
+      current_level = 1
+      buffer_array = [1,2,3,4]
+      right_ans? = False
+      wrong_counter = 0
+
+   2. if right_ans? = True then
+         i. shift buffer_array by step_size_value
+         ii. current_level = first of buffer_array
+         iii. update zpd = current_level
+
+   3. if right_ans? = False then
+         i. increment wrong_counter value
+         ii. shift buffer_array to left by 1
+         iii. current_level = first of buffer_array
+         iv. update zpd = current_level
+
+   4. if wrong_counter = max_threshold_value then
+         i. zpd is fixed
+         ii. rotate through buffer_array once
+         iii. if rotated once then
+               repeat the steps 2 & 3
+
+* Algo for pair problem
+  1. sort players by their zpd values
+  2. make pairs of 2 students
