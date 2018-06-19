@@ -500,6 +500,73 @@ b = tmp
 # Python also lets us
 # use this short-hand:
 a, b = b, a
+** Iterators
+*** Iterators provide a sequence interface to Python objects that’s memory efficient and considered Pythonic. Behold the beauty of the for-in loop!
+*** To support iteration an object needs to implement the iterator protocol by providing the __iter__ and __next__ dunder methods.
+*** Class-based iterators are only one way to write iterable objects in Python. Also consider generators and generator expressions.
+#+BEGIN_SRC python
+class Repeater:
+    def __init__(self, value):
+        self.value = value
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        return self.value
+
+repeater = Repeater('Hello')
+
+#How for-in works internally
+iterator = repeater.__iter__()
+while True:
+    item = iterator.__next__()
+    print(item)
+
+#iter and next functions are built in functions which internally calls __iter__ and __next__
+#Improves code readability
+#Another eg: len() --> __len__
+
+iterator = iter(repeater)
+
+print(next(iterator))
+print(next(iterator))
+
+#Syntactic sugar for above
+for item in repeater:
+    print(item)
+
+# Finite Execution, breaking loop when last element reached
+class BoundedRepeater:
+    def __init__(self, value, max_repeats):
+        self.value = value
+        self.max_repeats = max_repeats
+        self.count = 0
+
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if self.count >= self.max_repeats:
+            raise StopIteration
+        self.count += 1
+        return self.value
+
+
+repeater = BoundedRepeater('Hello',3)
+iterator = repeater.__iter__()
+while True:
+    try:
+        item = iterator.__next__()
+    except StopIteration:
+        break
+
+    print(item)
+
+for item in repeater:
+    print(item)
+
+#+END_SRC
 * #Machine-Learning
 *** Regression is taking continous data,find the equation that best fits the data, and be able forecast out a specific value.
 *** Regression is a form of supervised machine learning, which is where the scientist teaches the machine by showing it features and then showing it what the correct answer is, over and over, to teach the machine. Once the machine is taught, the scientist will usually "test" the machine on some unseen data, where the scientist still knows what the correct answer is, but the machine doesn't. The machine's answers are compared to the known answers, and the machine's accuracy can be measured. If the accuracy is high enough, the scientist may consider actually employing the algorithm in the real world.
